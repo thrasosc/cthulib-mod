@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "cthulib",
+  "version": "${version}",
+  "name": "CthuLib",
+  "description": "Core utility mod for Pixel Dream Studios modpacks",
+  "authors": [
+    "Thrasos",
+    "Pixel Dream Studios"
+  ],
+  "license": "GPL-3.0",
+  "icon": "assets/cthulib/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.pixeldreamstudios.cthulib.fabric.CthuLibFabricClient"
+    ]
+  },
+  "mixins": [
+    "cthulib.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.13",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  }
+}

@@ -1,0 +1,27 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "GNU GPL 3.0"
+
+[[mods]]
+modId = "cthulib"
+version = "${version}"
+displayName = "CthuLib"
+authors = "Thrasos, Pixel Dream Studios"
+description = '''
+Core utility mod for Pixel Dream Studios modpacks
+'''
+logoFile = "assets/cthulib/icon.png"
+
+[[dependencies.cthulib]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.cthulib]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
