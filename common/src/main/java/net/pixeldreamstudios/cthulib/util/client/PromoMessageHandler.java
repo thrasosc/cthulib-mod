@@ -7,8 +7,7 @@ import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 
-public class HourlyMessageHandler {
-  private static final int TICKS_PER_HOUR = 72000;
+public class PromoMessageHandler {
   private static final String TARGET_SERVER = "playcdu.co";
   private static final Component PART_1 = Component.literal("Use code ");
   private static final Component PART_2 =
@@ -25,27 +24,12 @@ public class HourlyMessageHandler {
   private static final Component PART_5 = Component.literal("!");
   private static final Component promoMessage =
       PART_1.copy().append(PART_2).append(PART_3).append(PART_4).append(PART_5);
-  private static int tickCounter = 0;
 
-  public static void onClientTick() {
+  public static void onJoinServer() {
     Minecraft mc = Minecraft.getInstance();
+    ServerData server = mc.getCurrentServer();
 
-    if (mc.player == null || mc.getCurrentServer() == null) {
-      tickCounter = 0; // Reset if not on a server
-      return;
-    }
-
-    ServerData serverData = mc.getCurrentServer();
-    String ip = serverData.ip.toLowerCase();
-
-    if (!ip.contains(TARGET_SERVER)) {
-      tickCounter = 0; // Reset if on wrong server
-      return;
-    }
-
-    tickCounter++;
-    if (tickCounter >= TICKS_PER_HOUR) {
-      tickCounter = 0;
+    if (server != null && server.ip.toLowerCase().contains(TARGET_SERVER)) {
       mc.player.sendSystemMessage(promoMessage);
     }
   }
