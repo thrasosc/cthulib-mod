@@ -49,3 +49,23 @@ shadowJar {
 remapJar {
     input.set shadowJar.archiveFile
 }
+
+unifiedPublishing {
+    project {
+        displayName = "$rootProject.name $project.version"
+        gameVersions = ["${minecraft_version}"]
+        gameLoaders = ["forge"]
+        releaseType = "release" // Optional, use "release", "beta" or "alpha"
+        changelog = rootProject.file("changelog.md").text
+
+        mainPublication tasks.remapJar // Declares the publicated jar
+
+        var cfToken = System.getenv("CURSEFORGE_TOKEN")
+        if (cfToken != null) {
+            curseforge {
+                token = cfToken
+                id = "983401" // Required, must be a string, ID of CurseForge project
+            }
+        }
+    }
+}
