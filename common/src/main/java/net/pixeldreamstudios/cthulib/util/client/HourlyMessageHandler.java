@@ -14,7 +14,7 @@ public class HourlyMessageHandler {
   private static final Component PART_2 =
       Component.literal("PixelDream").withStyle(Style.EMPTY.withColor(ChatFormatting.LIGHT_PURPLE));
   private static final Component PART_3 =
-      Component.literal(" for 30% off on the CDU store! Click the link below to get started!");
+      Component.literal(" (case-sensitive) for 30% off on the ");
   private static final Component PART_4 =
       Component.literal("CDU Store")
           .withStyle(
@@ -22,8 +22,9 @@ public class HourlyMessageHandler {
                   .withClickEvent(
                       new ClickEvent(ClickEvent.Action.OPEN_URL, "https://store.playcdu.co"))
                   .withUnderlined(true));
+  private static final Component PART_5 = Component.literal("!");
   private static final Component promoMessage =
-      PART_1.copy().append(PART_2).append(PART_3).append(PART_4);
+      PART_1.copy().append(PART_2).append(PART_3).append(PART_4).append(PART_5);
   private static int tickCounter = 0;
 
   public static void onClientTick() {
